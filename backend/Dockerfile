@@ -7,7 +7,7 @@ USER root
 WORKDIR /opt/
 ADD https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.99/bin/apache-tomcat-8.5.99.tar.gz .
 RUN tar -xzvf apache-tomcat-8.5.99.tar.gz
-RUN apt install java -y
+RUN yum install java -y
 WORKDIR /opt/apache-tomcat-8.5.99
 COPY student.war webapps/Studentapp
 COPY context.xml conf/context.xml
