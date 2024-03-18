@@ -44,16 +44,28 @@ To run the Docker file:
 docker run -d -p port_no docker_image_id
 ```
 # To set-up Backend in EC2  
+First edit the context.html file where we have to give db user&password with mysql_ip of docker container.
+```shell
+docker inspect docker_container_id | grep "IP"
+sudo vim context.html
+#change this field as per your convenience username="root" password="1234" url="jdbc:mysql://mysql_docker_ip:3306/studentapp"
+```
 Run the following command to Build apache2 docker image:
 ```shell
+cd Studentapp-3tier-docker/backend
 docker run -d -p port_no
 #eg
 docker build .
 docker run -d -p 8080:8080 
 ```
 # To set-up Frontend in EC2  
+First edit the index.html file where we have to give pub i.p in href tag.
+```shell
+<a href="http://pub_ip:8080/student/">
+```
 Run the following command to Build httpd docker image:
 ```shell
+cd Studentapp-3tier-docker/frontend
 docker run -d -p port_no
 #eg
 docker build .
